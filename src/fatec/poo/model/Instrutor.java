@@ -1,10 +1,12 @@
 package fatec.poo.model;
+
+import java.util.ArrayList;
+
 /*@author 0030481613035*/
 public class Instrutor extends Pessoa{
     private String formacao;
     private String areaFormacao;
-    private Turma[] turmas;
-    private int qntTurma;
+    private ArrayList<Turma> turmas;
             
     public Instrutor(String cpf, String nome) {
         super(cpf, nome);
@@ -19,7 +21,8 @@ public class Instrutor extends Pessoa{
     }
     
     void addTurma(Turma t ){
-        turmas[qntTurma++] = t;
+        this.turmas.add(t);
+        t.setInstrutor(this);
     }
     
     

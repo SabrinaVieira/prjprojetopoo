@@ -12,18 +12,19 @@ public class Matricula {
     private double Nota;
     private AVista avista;
     private APrazo aprazo;
+    private Aluno aluno;
+    private Turma turma;
 
     public Matricula(String data) {
         this.data = data;
     }
-
-    private Turma turma;
-
     
-    void Matricula (String matricula) {
-        
+    public void setAluno(Aluno aluno)
+    {
+        this.aluno = aluno;
+        aluno.setMatricula(this);
     }
-
+    
     public void setQtdeFaltas(int QtdeFaltas) {
         this.QtdeFaltas = QtdeFaltas;
     }
