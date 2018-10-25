@@ -10,6 +10,7 @@ public class Matricula {
     private String data;
     private int QtdeFaltas;
     private double Nota;
+    private Turma turma;
     
     void Matricula (String matricula) {
         
@@ -27,6 +28,8 @@ public class Matricula {
         
     }
     
-    
+    public void setTurma(Turma turma){
+        this.turma = turma;
+    }
     
 }

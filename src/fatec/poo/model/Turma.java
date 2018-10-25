@@ -21,10 +21,13 @@ public class Turma {
     private String observacoes;
     private Instrutor instrutor;
     private Curso curso;
+    private ArrayList<Matricula> matriculas;
     
     public Turma(String sigla, String descricao){
         this.siglaTurma = sigla;
         this.descricao = descricao;
+        
+        this.matriculas = new ArrayList<Matricula>();
     }
     
     public void setDescricao(String descricao) {
@@ -62,4 +65,8 @@ public class Turma {
         this.curso = curso;
     }
     
+    public void addMatricula(Matricula matricula){
+        this.matriculas.add(matricula);
+        matricula.setTurma(this);
+    }
 }
