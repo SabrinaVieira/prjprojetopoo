@@ -10,6 +10,12 @@ public class Matricula {
     private String data;
     private int QtdeFaltas;
     private double Nota;
+    private AVista avista;
+    private APrazo aprazo;
+
+    public Matricula(String data) {
+        this.data = data;
+    }
     
     void Matricula (String matricula) {
         
@@ -23,7 +29,15 @@ public class Matricula {
         this.Nota = Nota;
     }
     
-    void EmitirCarne() {
+    public void setAvista (AVista obj) {
+        this.avista = obj;
+    }
+    
+    public void setAprazo (APrazo obj) {
+        this.aprazo = obj;
+    }
+    
+    public void EmitirCarne() {
         
     }
     

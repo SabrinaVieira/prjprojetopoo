@@ -13,13 +13,14 @@ public class APrazo {
     private double valor, taxaJuros;
     private String dtVencimento;
     private int qtdeMensalidade;
+    
 
     public void setValor(double valor) {
         this.valor = valor;
     }
 
-    public void setTaxaJuros(double taxaJuros) {
-        this.taxaJuros = taxaJuros;
+    public void setTaxaJuros(double porcentagem) {
+        this.taxaJuros = porcentagem;
     }
 
     public void setDtVencimento(String dtVencimento) {
@@ -29,8 +30,5 @@ public class APrazo {
     public void setQtdeMensalidade(int qtdeMensalidade) {
         this.qtdeMensalidade = qtdeMensalidade;
     }
-    
-    
-    
     
 }
