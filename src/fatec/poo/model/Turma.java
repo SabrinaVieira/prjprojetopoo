@@ -19,12 +19,12 @@ public class Turma {
     private String periodo;
     private int qtdVagas;
     private String observacoes;
-    private ArrayList<Instrutor> instrutores;
+    private Instrutor instrutor;
+    private Curso curso;
     
     public Turma(String sigla, String descricao){
         this.siglaTurma = sigla;
         this.descricao = descricao;
-        instrutores = new ArrayList<Instrutor>();
     }
     
     public void setDescricao(String descricao) {
@@ -51,11 +51,15 @@ public class Turma {
         this.observacoes = observacoes;
     }
     
-    public void addInstrutor(Instrutor instrutor){
-        this.instrutores.add(instrutor);
-        /*TODO: ADD TO INSTRUTOR*/
+    public void setInstrutor(Instrutor instrutor){
+        this.instrutor = instrutor;
     }
     
     public void emitirListaFrequencia(){}
+    
+    public void setCurso(Curso curso)
+    {
+        this.curso = curso;
+    }
     
 }
