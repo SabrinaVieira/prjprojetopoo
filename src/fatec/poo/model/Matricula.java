@@ -16,6 +16,9 @@ public class Matricula {
     public Matricula(String data) {
         this.data = data;
     }
+
+    private Turma turma;
+
     
     void Matricula (String matricula) {
         
@@ -41,6 +44,8 @@ public class Matricula {
         
     }
     
-    
+    public void setTurma(Turma turma){
+        this.turma = turma;
+    }
     
 }
