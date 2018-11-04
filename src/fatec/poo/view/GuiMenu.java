@@ -136,7 +136,7 @@ public class GuiMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCursoActionPerformed
 
     private void jMenuItemAlocarInstrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlocarInstrutorActionPerformed
-        new GuiAlocarInstrutor().setVisible(true);
+       // new GuiAlocarInstrutor().setVisible(true);
     }//GEN-LAST:event_jMenuItemAlocarInstrutorActionPerformed
 
     private void jMenuItemInstrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorActionPerformed
