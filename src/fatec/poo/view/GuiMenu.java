@@ -27,15 +27,15 @@ public class GuiMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuTopo = new javax.swing.JMenuBar();
+        menuTelas = new javax.swing.JMenu();
         jMenuItemCurso = new javax.swing.JMenuItem();
         jMenuItemTurma = new javax.swing.JMenuItem();
         jMenuItemInstrutor = new javax.swing.JMenuItem();
         jMenuItemAluno = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemSair = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        menuAcoes = new javax.swing.JMenu();
         jMenuItemAlocarInstrutor = new javax.swing.JMenuItem();
         jMenuItemEfetuarMatricula = new javax.swing.JMenuItem();
 
@@ -43,7 +43,7 @@ public class GuiMenu extends javax.swing.JFrame {
         setTitle("Trabalho POO");
         setName("Trabalho POO"); // NOI18N
 
-        jMenu1.setText("Cadastros");
+        menuTelas.setText("Cadastros");
 
         jMenuItemCurso.setText("Curso");
         jMenuItemCurso.addActionListener(new java.awt.event.ActionListener() {
@@ -51,7 +51,7 @@ public class GuiMenu extends javax.swing.JFrame {
                 jMenuItemCursoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemCurso);
+        menuTelas.add(jMenuItemCurso);
 
         jMenuItemTurma.setText("Turma");
         jMenuItemTurma.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +59,7 @@ public class GuiMenu extends javax.swing.JFrame {
                 jMenuItemTurmaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemTurma);
+        menuTelas.add(jMenuItemTurma);
 
         jMenuItemInstrutor.setText("Instrutor");
         jMenuItemInstrutor.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +67,7 @@ public class GuiMenu extends javax.swing.JFrame {
                 jMenuItemInstrutorActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemInstrutor);
+        menuTelas.add(jMenuItemInstrutor);
 
         jMenuItemAluno.setText("Aluno");
         jMenuItemAluno.addActionListener(new java.awt.event.ActionListener() {
@@ -75,8 +75,8 @@ public class GuiMenu extends javax.swing.JFrame {
                 jMenuItemAlunoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemAluno);
-        jMenu1.add(jSeparator1);
+        menuTelas.add(jMenuItemAluno);
+        menuTelas.add(jSeparator1);
 
         jMenuItemSair.setText("Sair");
         jMenuItemSair.addActionListener(new java.awt.event.ActionListener() {
@@ -84,26 +84,21 @@ public class GuiMenu extends javax.swing.JFrame {
                 jMenuItemSairActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItemSair);
+        menuTelas.add(jMenuItemSair);
 
-        jMenuBar1.add(jMenu1);
+        menuTopo.add(menuTelas);
 
-        jMenu2.setText("Operações");
+        menuAcoes.setText("Operações");
 
         jMenuItemAlocarInstrutor.setText("Alocar Instrutor");
-        jMenuItemAlocarInstrutor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlocarInstrutorActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItemAlocarInstrutor);
+        menuAcoes.add(jMenuItemAlocarInstrutor);
 
         jMenuItemEfetuarMatricula.setText("Efetuar Matrícula");
-        jMenu2.add(jMenuItemEfetuarMatricula);
+        menuAcoes.add(jMenuItemEfetuarMatricula);
 
-        jMenuBar1.add(jMenu2);
+        menuTopo.add(menuAcoes);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuTopo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,10 +129,6 @@ public class GuiMenu extends javax.swing.JFrame {
     private void jMenuItemCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCursoActionPerformed
         new GuiCurso().setVisible(true);
     }//GEN-LAST:event_jMenuItemCursoActionPerformed
-
-    private void jMenuItemAlocarInstrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlocarInstrutorActionPerformed
-       // new GuiAlocarInstrutor().setVisible(true);
-    }//GEN-LAST:event_jMenuItemAlocarInstrutorActionPerformed
 
     private void jMenuItemInstrutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemInstrutorActionPerformed
         new GuiInstrutor().setVisible(true);
@@ -179,9 +170,6 @@ public class GuiMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemAlocarInstrutor;
     private javax.swing.JMenuItem jMenuItemAluno;
     private javax.swing.JMenuItem jMenuItemCurso;
@@ -190,5 +178,8 @@ public class GuiMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemTurma;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JMenu menuAcoes;
+    private javax.swing.JMenu menuTelas;
+    private javax.swing.JMenuBar menuTopo;
     // End of variables declaration//GEN-END:variables
 }

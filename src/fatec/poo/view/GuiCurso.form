@@ -32,30 +32,30 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblSiglaCurso" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNomeCurso" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCargaHoraria" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblValorCurso" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="txtCargaHoraria" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
                           <Component id="txtNomeCurso" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="txtSiglaCurso" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                           <Component id="txtValorCurso" alignment="0" min="-2" pref="53" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblProgramaCurso" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtProgramaCurso" min="-2" pref="99" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDtVigencia" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblValHora" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -84,41 +84,41 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSiglaCurso" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSiglaCurso" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNomeCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNomeCurso" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCargaHoraria" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtCargaHoraria" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblValorCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtValorCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblProgramaCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtProgramaCurso" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDtVigencia" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtDtVigencia" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtValorHoraInstru" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblValHora" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -136,56 +136,56 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="lblSiglaCurso">
       <Properties>
         <Property name="text" type="java.lang.String" value="Sigla curso"/>
         <Property name="name" type="java.lang.String" value="lblSiglaCurso" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="lblNomeCurso">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nome curso"/>
         <Property name="name" type="java.lang.String" value="lblNomeCurso" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblCargaHoraria">
       <Properties>
         <Property name="text" type="java.lang.String" value="Carga hor&#xe1;ria"/>
         <Property name="name" type="java.lang.String" value="lblCargaHoraria" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="lblValorCurso">
       <Properties>
         <Property name="text" type="java.lang.String" value="Valor curso"/>
         <Property name="name" type="java.lang.String" value="lblValorCurso" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
+    <Component class="javax.swing.JLabel" name="lblProgramaCurso">
       <Properties>
         <Property name="text" type="java.lang.String" value="Programa do curso"/>
         <Property name="name" type="java.lang.String" value="lblProgramaCurso" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
+    <Component class="javax.swing.JLabel" name="lblDtVigencia">
       <Properties>
         <Property name="text" type="java.lang.String" value="Data de vig&#xea;ncia"/>
         <Property name="name" type="java.lang.String" value="lblDtVigencia" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel7">
+    <Component class="javax.swing.JLabel" name="lblValHora">
       <Properties>
         <Property name="text" type="java.lang.String" value="Valor hora instrutor"/>
         <Property name="name" type="java.lang.String" value="lblValorHoraInstru" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField2">
+    <Component class="javax.swing.JTextField" name="txtSiglaCurso">
       <Properties>
         <Property name="name" type="java.lang.String" value="txtfSiglaCurso" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNomeCurso">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="txtNomeCurso" noResource="true"/>
       </Properties>
       <AccessibilityProperties>
@@ -194,7 +194,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCargaHoraria">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="txtCargaHoraria" noResource="true"/>
       </Properties>
       <Events>
@@ -203,28 +203,28 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtValorCurso">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="txtValorCurso" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtProgramaCurso">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="txtProgramaCurso" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtValorHoraInstru">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="txtValorHoraInstru" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtDtVigencia">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format="##/##/####" subtype="-1" type="5"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="txtDtVigencia" noResource="true"/>
       </Properties>
       <Events>
@@ -245,6 +245,7 @@
           <Image iconType="3" name="/fatec/poo/view/icon/Alterar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Alterar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnInserir">
@@ -253,6 +254,7 @@
           <Image iconType="3" name="/fatec/poo/view/icon/add.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inserir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnExcluir">
@@ -261,6 +263,7 @@
           <Image iconType="3" name="/fatec/poo/view/icon/Eraser.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSair">
