@@ -40,7 +40,7 @@ public class GuiMenu extends javax.swing.JFrame {
         jMenuItemEfetuarMatricula = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Trabalho POO");
+        setTitle("Menu");
         setName("Trabalho POO"); // NOI18N
 
         menuTelas.setText("Cadastros");

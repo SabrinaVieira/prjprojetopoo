@@ -28,7 +28,7 @@ public class GuiTurma extends javax.swing.JFrame {
     private void initComponents() {
 
         lblCurso = new javax.swing.JLabel();
-        cbxCurso = new javax.swing.JComboBox<String>();
+        cbxCurso = new javax.swing.JComboBox<>();
         lblSigla = new javax.swing.JLabel();
         txtSigla = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
@@ -36,7 +36,7 @@ public class GuiTurma extends javax.swing.JFrame {
         lblQtdVagas = new javax.swing.JLabel();
         txtQtdeVagas = new javax.swing.JTextField();
         lblPeriodo = new javax.swing.JLabel();
-        cbxPeriodo = new javax.swing.JComboBox<String>();
+        cbxPeriodo = new javax.swing.JComboBox<>();
         lblDtInicio = new javax.swing.JLabel();
         txtDataTermino = new javax.swing.JFormattedTextField();
         lblDtTermino = new javax.swing.JLabel();
@@ -48,7 +48,7 @@ public class GuiTurma extends javax.swing.JFrame {
         bntSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cadastrar Turma");
+        setTitle("Turma");
 
         lblCurso.setText("Curso");
 
@@ -87,7 +87,7 @@ public class GuiTurma extends javax.swing.JFrame {
 
         lblPeriodo.setText("Período");
 
-        cbxPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
+        cbxPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         cbxPeriodo.setEnabled(false);
         cbxPeriodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
