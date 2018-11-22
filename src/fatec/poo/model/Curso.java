@@ -31,6 +31,38 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
     }
 
+    public String getSigla() {
+        return sigla;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public String getDataVigencia() {
+        return dataVigencia;
+    }
+
+    public double getValorHoraInstrutor() {
+        return valorHoraInstrutor;
+    }
+
+    public String getPrograma() {
+        return programa;
+    }
+
+    public ArrayList<Turma> getTurmas() {
+        return turmas;
+    }
+
     public void setValor(double valor) {
         this.valor = valor;
     }

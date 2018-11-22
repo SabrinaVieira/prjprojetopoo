@@ -69,4 +69,48 @@ public class Turma {
         this.matriculas.add(matricula);
         matricula.setTurma(this);
     }
+
+    public String getSiglaTurma() {
+        return siglaTurma;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public String getDataTermino() {
+        return dataTermino;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public int getQtdVagas() {
+        return qtdVagas;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public Instrutor getInstrutor() {
+        return instrutor;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public ArrayList<Matricula> getMatriculas() {
+        return matriculas;
+    }
+    
+    
+    
+    
 }
