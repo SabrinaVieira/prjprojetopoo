@@ -8,6 +8,7 @@ package fatec.poo.control;
 import fatec.poo.model.Curso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -41,7 +42,6 @@ public class DaoCurso {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        
     }
     
     public void alterar (Curso curso) {
@@ -66,5 +66,53 @@ public class DaoCurso {
         }
     }
     
+    
+    public void excluir (String sigla) {
+        Curso curso = null;
+        
+        PreparedStatement ps = null;
+        
+        try {
+            ps = conn.prepareStatement("DELETE from tbcurso WHERE " +
+                                        "Sigla_Curso=?");
+            ps.setString(1,sigla);
+            
+            ps.execute();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+    }
+    
+    public void consultar (String sigla) {
+        Curso curso = null;
+        PreparedStatement ps = null;
+        
+        try {
+            ps = conn.prepareStatement("SELECT from tbcurso WHERE " +
+                                        "Sigla_Curso= ?");
+            ps.setString(1, sigla);
+            ResultSet rs =  ps.executeQuery();
+            
+            if (rs.next()) {
+                curso = new Curso (sigla, rs.getString("Nome_Turma"));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+    }
+    
+    public void listar (Curso curso) {
+        PreparedStatement ps = null;
+        
+        try {
+            ps = conn.prepareStatement("SELECT Sigla_Curso from tbcurso");
+            ps.execute();
+            
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+    }
     
 }
