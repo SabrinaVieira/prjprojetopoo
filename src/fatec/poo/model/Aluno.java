@@ -18,5 +18,14 @@ public class Aluno extends Pessoa{
     {
         this.matricula = matricula;
     }
+
+    public String getEscolaridade() {
+        return escolaridade;
+    }
+
+    public Matricula getMatricula() {
+        return matricula;
+    }
+    
     
 }
