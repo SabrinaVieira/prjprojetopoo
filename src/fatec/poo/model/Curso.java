@@ -46,6 +46,15 @@ public class Curso {
     public void setPrograma(String programa) {
         this.programa = programa;
     }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+   
     
     public void addTurma(Turma turma){
        this.turmas.add(turma);

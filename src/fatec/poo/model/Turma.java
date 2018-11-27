@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fatec.poo.model;
-
 import java.util.ArrayList;
 
-/**
- *
- * @author 0030481713006
- */
+/*@author 0030481713006 */
 public class Turma {
     private String siglaTurma;
     private String descricao;
@@ -50,19 +41,59 @@ public class Turma {
         this.qtdVagas = qtdVagas;
     }
 
-    public void setObservacoes(String observacoes) {
+    public void setObservacoes(String observacoes) {// não há campo de observações na GUi
         this.observacoes = observacoes;
     }
     
-    public void setInstrutor(Instrutor instrutor){
+    public void setInstrutor(Instrutor instrutor){// não há campo de instrutor na GUi
         this.instrutor = instrutor;
     }
     
-    public void emitirListaFrequencia(){}
+    public void emitirListaFrequencia(){}// não há campo de frequencia na GUi - esta incompleto
     
     public void setCurso(Curso curso)
     {
         this.curso = curso;
+    }
+
+    public String getSiglaTurma() {
+        return siglaTurma;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public String getDataTermino() {
+        return dataTermino;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public int getQtdVagas() {
+        return qtdVagas;
+    }
+
+    public String getObservacoes() {
+        return observacoes;
+    }
+
+    public Instrutor getInstrutor() {
+        return instrutor;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public ArrayList<Matricula> getMatriculas() {
+        return matriculas;
     }
     
     public void addMatricula(Matricula matricula){

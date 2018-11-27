@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fatec.poo.view;
+
+import fatec.poo.control.Conexao;
+import fatec.poo.control.DaoTurma;
+import fatec.poo.model.Turma;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -125,6 +125,11 @@ public class GuiTurma extends javax.swing.JFrame {
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/pesq.png"))); // NOI18N
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/add.png"))); // NOI18N
         btnInserir.setText("Inserir");
@@ -279,25 +284,161 @@ public class GuiTurma extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDtInicioActionPerformed
 
+        private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+        conexao = new Conexao("BD1613035","BD1613035");
+        conexao.setDriver("oracle.jdbc.driver.OracleDriver");
+        conexao.setConnectionString("jdbc:oracle:thin:@apolo:1521:xe");
+        daoTurma = new DaoTurma(conexao.conectar());
+    }                                 
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
+        conexao.fecharConexao();
+        dispose();
+    }
+    
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        // TODO add your handling code here:
+        try{
+            turma = new Turma(txtSigla.getText(), txtNome.getText());
+            turma.setCurso(cbxCurso.getCurso().getSigla().getSelectedItem().toString());
+            turma.setQtdVagas(Integer.parseInt(txtQtdeVagas.getText()));
+            turma.setPeriodo(cbxPeriodo.getSelectedItem().toString());
+            turma.setDataInicio(txtDtInicio.getText().replace("/", ""));
+            turma.setDataTermino(txtDataTermino.getText().replace("/", ""));        
+            daoTurma.inserir(turma);
+            
+            cbxCurso.setSelectedItem("");
+            txtSigla.setText("");
+            txtNome.setText("");
+            txtQtdeVagas.setText("");
+            cbxPeriodo.setSelectedItem("");
+            txtDtInicio.setText("");
+            txtDataTermino.setText("");
+
+            cbxCurso.setEnabled(true);
+            cbxCurso.requestFocus();
+            txtSigla.setEnabled(false);
+            txtNome.setEnabled(false);
+            txtQtdeVagas.setEnabled(false);
+            cbxPeriodo.setEnabled(false);
+            txtDtInicio.setEnabled(false);
+            txtDataTermino.setEnabled(false);
+
+            btnConsultar.setEnabled(true);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            
+            
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos", "ERRO", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?")== 0){//Sim
+            turma.setCurso(cbxCurso.getSelectedItem().toString());
+            turma.setDescricao(txtNome.getText());
+            turma.setQtdVagas(Integer.valueOf(txtQtdeVagas.getText()));
+            turma.setPeriodo(cbxPeriodo.getSelectedItem().toString());
+            turma.setDataInicio(txtDtInicio.getText());
+            turma.setDataTermino(txtDataTermino.getText());
+           
+           daoTurma.alterar(turma);
+        }
+        cbxCurso.setSelectedItem("");
+        txtSigla.setText("");
+        txtNome.setText("");
+        txtQtdeVagas.setText("");
+        cbxPeriodo.setSelectedItem("");
+        txtDtInicio.setText("");
+        txtDataTermino.setText("");
+        
+        cbxCurso.setEnabled(true);
+        cbxCurso.requestFocus();
+        txtSigla.setEnabled(false);
+        txtNome.setEnabled(false);
+        txtQtdeVagas.setEnabled(false);
+        cbxPeriodo.setEnabled(false);
+        txtDtInicio.setEnabled(false);
+        txtDataTermino.setEnabled(false);
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "Confirma Exclusão?") == 0){
+            daoTurma.excluir(turma);
+        }
+        cbxCurso.setSelectedItem("");
+        txtSigla.setText("");
+        txtNome.setText("");
+        txtQtdeVagas.setText("");
+        cbxPeriodo.setSelectedItem("");
+        txtDtInicio.setText("");
+        txtDataTermino.setText("");
+        
+        cbxCurso.setEnabled(true);
+        cbxCurso.requestFocus();
+        txtSigla.setEnabled(false);
+        txtNome.setEnabled(false);
+        txtQtdeVagas.setEnabled(false);
+        cbxPeriodo.setEnabled(false);
+        txtDtInicio.setEnabled(false);
+        txtDataTermino.setEnabled(false);
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void bntSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSairActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_bntSairActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+            if (txtSigla.getText() == null){
+                cbxCurso.setEnabled(false);
+                txtSigla.setEnabled(false);
+                txtNome.setEnabled(true);
+                txtNome.requestFocus();
+                txtQtdeVagas.setEnabled(true);
+                cbxPeriodo.setEnabled(true);
+                txtDtInicio.setEnabled(true);
+                txtDataTermino.setEnabled(true);
+
+                btnConsultar.setEnabled(false);
+                btnInserir.setEnabled(false);
+                btnAlterar.setEnabled(true);
+                btnExcluir.setEnabled(true);
+            }
+            else{
+                txtNome.setText(turma.getDescricao());
+                txtDtInicio.setText(turma.getDataInicio());
+                txtDataTermino.setText(turma.getDataTermino());
+                cbxPeriodo.setSelectedItem(turma.getPeriodo());
+                txtQtdeVagas.setText(turma.getQtdVagas().toString);
+
+                cbxCurso.setEnabled(false);
+                txtSigla.setEnabled(false);
+                txtNome.requestFocus();
+                txtNome.setEnabled(true);
+                txtQtdeVagas.setEnabled(true);
+                cbxPeriodo.setEnabled(true);
+                txtDtInicio.setEnabled(true);
+                txtDataTermino.setEnabled(true);
+
+                btnConsultar.setEnabled(false);
+                btnInserir.setEnabled(true);
+                btnAlterar.setEnabled(false);
+                btnExcluir.setEnabled(false);
+            } 
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    /* @param args the command line arguments*/
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -329,7 +470,6 @@ public class GuiTurma extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bntSair;
     private javax.swing.JButton btnAlterar;
@@ -351,4 +491,7 @@ public class GuiTurma extends javax.swing.JFrame {
     private javax.swing.JTextField txtQtdeVagas;
     private javax.swing.JTextField txtSigla;
     // End of variables declaration//GEN-END:variables
+    private DaoTurma daoTurma = null;
+    private Turma turma = null;
+    private Conexao conexao = null;
 }
