@@ -6,7 +6,7 @@ import fatec.poo.model.Turma;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * ESTÁ COMENTADO PARTES EM QUE É SETADO O CURSO (NÃO SEI SE É ASSIM PARA SER FEITO)
  * @author 0030481713006
  */
 public class GuiTurma extends javax.swing.JFrame {
@@ -299,7 +299,7 @@ public class GuiTurma extends javax.swing.JFrame {
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
         try{
             turma = new Turma(txtSigla.getText(), txtNome.getText());
-            turma.setCurso(cbxCurso.getCurso().getSigla().getSelectedItem().toString());
+            //turma.setCurso(cbxCurso.getSelectedItem().toString());
             turma.setQtdVagas(Integer.parseInt(txtQtdeVagas.getText()));
             turma.setPeriodo(cbxPeriodo.getSelectedItem().toString());
             turma.setDataInicio(txtDtInicio.getText().replace("/", ""));
@@ -336,7 +336,7 @@ public class GuiTurma extends javax.swing.JFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?")== 0){//Sim
-            turma.setCurso(cbxCurso.getSelectedItem().toString());
+            //turma.setCurso((cbxCurso.getSelectedItem()));
             turma.setDescricao(txtNome.getText());
             turma.setQtdVagas(Integer.valueOf(txtQtdeVagas.getText()));
             turma.setPeriodo(cbxPeriodo.getSelectedItem().toString());
@@ -420,8 +420,8 @@ public class GuiTurma extends javax.swing.JFrame {
                 txtDtInicio.setText(turma.getDataInicio());
                 txtDataTermino.setText(turma.getDataTermino());
                 cbxPeriodo.setSelectedItem(turma.getPeriodo());
-                txtQtdeVagas.setText(turma.getQtdVagas().toString);
-
+                txtQtdeVagas.setText(Integer.toString(turma.getQtdVagas()));
+                    
                 cbxCurso.setEnabled(false);
                 txtSigla.setEnabled(false);
                 txtNome.requestFocus();
