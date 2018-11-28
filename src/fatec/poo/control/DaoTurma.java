@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-=======
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
->>>>>>> 714ef8d031d792b110d6513219dd42d94460af7d
+
 package fatec.poo.control;
 
 import fatec.poo.model.Turma;
@@ -14,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-<<<<<<< HEAD
+
 /*@author Sabrina */
 public class DaoTurma {
     private Connection con;
@@ -65,7 +64,7 @@ public class DaoTurma {
             
             if(rs.next()){
                 tur = new Turma(sigla, rs.getString("nome_t"));
-                tur = new Turma(sigla, rs.getInt(Integer.valueOf("qnt_vagas")));//este é inteiro mas da erro com getint
+                tur = new Turma(sigla, rs.getString(("qnt_vagas")));//este é inteiro mas da erro com getint
                 tur = new Turma(sigla, rs.getString("dt_inicio"));
                 tur = new Turma(sigla, rs.getString("periodo"));
                 tur = new Turma(sigla, rs.getString("dt_term"));

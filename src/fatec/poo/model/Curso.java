@@ -79,13 +79,7 @@ public class Curso {
         this.programa = programa;
     }
 
-    public String getSigla() {
-        return sigla;
-    }
-
-    public String getNome() {
-        return nome;
-    }
+    
    
     
     public void addTurma(Turma turma){
