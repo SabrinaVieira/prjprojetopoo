@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-=======
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
->>>>>>> 714ef8d031d792b110d6513219dd42d94460af7d
 package fatec.poo.control;
 
 import fatec.poo.model.Curso;
@@ -13,39 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-<<<<<<< HEAD
-import java.util.ArrayList;
-
-public class DaoCurso {
-    private Connection con;
-    
-    public DaoCurso(Connection con){
-        this.con = con;
-    }
-    public void inserir(Curso curso){
-        PreparedStatement ps = null;
-    }
-    
-    public void alterar(Curso curso){
-        PreparedStatement ps = null;
-    }
-    
-    public Curso consultar(Curso curso){
-        Curso cur = null;
-        PreparedStatement ps = null;
-        
-        return (cur);
-    }
-     public void excluir(Curso curso){
-        PreparedStatement ps = null;
-     }
-     public ArrayList listar(Curso curso){
-        PreparedStatement ps = null;
-        
-     }
-     }
-=======
-
 /**
  *
  * @author 0030481623010
@@ -149,6 +108,4 @@ public class DaoCurso {
             System.out.println(ex.toString());
         }
     }
-    
->>>>>>> 714ef8d031d792b110d6513219dd42d94460af7d
 }

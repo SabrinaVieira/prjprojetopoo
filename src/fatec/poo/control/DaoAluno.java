@@ -5,14 +5,6 @@
  */
 package fatec.poo.control;
 
-<<<<<<< HEAD
-/**
- *
- * @author Sabrina
- */
-public class DaoAluno {
-    
-=======
 import fatec.poo.model.Aluno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,5 +129,4 @@ public class DaoAluno {
         
     }
 
->>>>>>> 714ef8d031d792b110d6513219dd42d94460af7d
 }
