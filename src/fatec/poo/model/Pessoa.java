@@ -167,9 +167,12 @@ public class Pessoa {
      * @param cpf 
      * @return 
      */
-    public static boolean validaPrimeiroDigito(String cpf){
+    private static boolean validaPrimeiroDigito(String cpf){
         int somaNumeros = 0;
         int countCol;
+        
+        if(cpf.length() < 11)
+            return false;
         
         for(countCol = 1; countCol < 10; countCol++){
             int number = Integer.parseInt(cpf.substring( countCol - 1, countCol));
@@ -190,7 +193,7 @@ public class Pessoa {
      * @param cpf 
      * @return 
      */
-    public static boolean validaSegundoDigito(String cpf){
+    private static boolean validaSegundoDigito(String cpf){
         
         int somaNumeros = 0;
         int countCol = 0;

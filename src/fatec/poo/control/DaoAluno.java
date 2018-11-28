@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -32,21 +34,31 @@ public class DaoAluno {
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                aluno = new Aluno(cpf, rs.getString("nome"));
+                aluno = new Aluno(cpf, rs.getString("nome_inst"));
                 aluno.setEscolaridade(rs.getString("escolaridade"));
                 aluno.setBairro(rs.getString("bairro"));
-                aluno.setCelular(rs.getString("celular"));
+                aluno.setCelular(rs.getString("tel_cel"));
                 aluno.setCep(rs.getString("cep"));
                 aluno.setCidade(rs.getString("cidade"));
-                aluno.setDataNasc(rs.getString("data_nasc"));
                 aluno.setEmail(rs.getString("email"));
                 aluno.setEndereco(rs.getString("endereco"));
-                aluno.setEstado(rs.getString("estado"));
-                aluno.setEstadoCivil(rs.getString("estado_civil"));
-                aluno.setNumero(rs.getInt("numero"));
+                aluno.setEstado(rs.getString("uf"));
+                aluno.setEstadoCivil(rs.getString("civil"));
+                aluno.setNumero(rs.getInt("num"));
                 aluno.setRg(rs.getString("rg"));
                 aluno.setSexo(rs.getString("sexo"));
-                aluno.setTelefone(rs.getString("telefone"));
+                aluno.setTelefone(rs.getString("tel_res"));
+                
+                try
+                {
+                    SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    SimpleDateFormat targetFt = new SimpleDateFormat("dd/MM/yyyy");
+                    Date date = dbFormat.parse(rs.getString("dt_nasc"));
+                    aluno.setDataNasc(targetFt.format(date));
+                }catch(Exception e)
+                {
+                    System.out.println(e.toString());
+                }
                 
             }
         }catch(SQLException e)
@@ -61,9 +73,9 @@ public class DaoAluno {
         try
         {
             PreparedStatement ps = conn.prepareStatement("INSERT INTO tbAluno "
-                    + "(cpf, nome, escolaridade, bairro, celular, cep, cidade, data_nasc,"
-                    + " email, endereco, estado, estado_civil, numero, rg, sexo, telefone) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    + "(cpf, nome_inst, escolaridade, bairro, tel_cel, cep, cidade, dt_nasc,"
+                    + " email, endereco, uf, civil, num, rg, sexo, tel_res) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             this.setPrepareStatement(ps, aluno);
             
             ps.execute();
@@ -77,11 +89,11 @@ public class DaoAluno {
     {
         try
         {
-            PreparedStatement ps = conn.prepareStatement("UPDATE tbAluno "
-                    + "cpf = ?, nome = ? , escolaridade = ?, bairro = ?, celular = ?, cep = ?, cidade = ?, data_nasc = ?,"
-                    + " email = ?, endereco = ?, estado = ?, estado_civil = ?, numero = ?, rg = ?, sexo = ?, telefone = ? ");
+            PreparedStatement ps = conn.prepareStatement("UPDATE tbAluno SET "
+                    + "cpf = ?, nome_inst = ? , escolaridade = ?, bairro = ?, tel_cel = ?, cep = ?, cidade = ?, dt_nasc = ?,"
+                    + " email = ?, endereco = ?, uf = ?, civil = ?, num = ?, rg = ?, sexo = ?, tel_res = ? WHERE cpf = ?");
             this.setPrepareStatement(ps, aluno);
-            
+            ps.setString(17, aluno.getCpf());
             ps.execute();
         } 
         catch(SQLException ex){
@@ -94,7 +106,7 @@ public class DaoAluno {
         try
         {
             PreparedStatement ps = conn.prepareStatement("DELETE FROM tbaluno WHERE cpf = ?");
-            ps.setString(0, aluno.getCpf());
+            ps.setString(1, aluno.getCpf());
             ps.execute();
         } 
         catch(SQLException ex){
@@ -120,8 +132,9 @@ public class DaoAluno {
             ps.setString(11, aluno.getEstado());
             ps.setString(12, aluno.getEstadoCivil());
             ps.setInt(13, aluno.getNumero());
-            ps.setString(14, aluno.getSexo());
-            ps.setString(15, aluno.getTelefone());
+            ps.setString(14, aluno.getRg());
+            ps.setString(15, aluno.getSexo());
+            ps.setString(16, aluno.getTelefone());
         }catch(SQLException e)
         {
             System.out.println(e.getMessage());

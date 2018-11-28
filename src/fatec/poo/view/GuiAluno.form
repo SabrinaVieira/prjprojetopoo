@@ -9,6 +9,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -25,8 +28,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblCpf" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -47,41 +50,45 @@
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblCep" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTelRes" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCelular" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+                                      <Component id="lblCep" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtTelRes" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Component id="txtCelular" min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Component id="txtCep" min="-2" pref="73" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtCep" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblEscolaridade" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblDtNascto" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txtDtNascto" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblDtNascto" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtDtNascto" min="-2" pref="73" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="txtNumero" min="-2" pref="73" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblEscolaridade" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="cbxEscolaridade" min="-2" pref="169" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="lblTelRes" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="txtNumero" min="-2" pref="73" max="-2" attributes="0"/>
+                                                      <Component id="lblCelular" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="cbxEscolaridade" min="-2" pref="130" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txtCelular" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
+                                                  <Component id="txtTelRes" min="-2" pref="93" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -95,12 +102,12 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cbxEstado" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="cbxEstado" min="-2" pref="59" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="txtRg" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cbxSexo" min="-2" pref="88" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="cbxSexo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                                       <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="cbxEstadoCivil" min="-2" pref="88" max="-2" attributes="0"/>
@@ -110,7 +117,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -119,21 +126,20 @@
                               <Component id="txtEmail" min="-2" pref="218" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="btnConsultar" linkSize="3" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="btnConsultar" min="-2" pref="118" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnInserir" min="-2" pref="99" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnAlterar" linkSize="3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnExcluir" linkSize="3" min="-2" pref="83" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnSair" linkSize="3" min="-2" pref="65" max="-2" attributes="0"/>
+                              <Component id="btnInserir" pref="100" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAlterar" pref="100" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="btnExcluir" pref="101" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnSair" min="-2" pref="116" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -227,9 +233,9 @@
                           <Component id="txtTelRes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtCelular" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCelular" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -246,6 +252,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Consultar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAlterar">
       <Properties>
@@ -255,6 +264,9 @@
         <Property name="text" type="java.lang.String" value="Alterar"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnInserir">
       <Properties>
@@ -276,6 +288,9 @@
         <Property name="text" type="java.lang.String" value="Excluir"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSair">
       <Properties>
@@ -284,6 +299,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCpf">
       <Properties>
@@ -315,7 +333,10 @@
     <Component class="javax.swing.JComboBox" name="cbxSexo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="2">
+            <StringItem index="0" value="M"/>
+            <StringItem index="1" value="F"/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -358,7 +379,35 @@
     <Component class="javax.swing.JComboBox" name="cbxEstado">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="27">
+            <StringItem index="0" value="AC"/>
+            <StringItem index="1" value="AL"/>
+            <StringItem index="2" value="AM"/>
+            <StringItem index="3" value="AP"/>
+            <StringItem index="4" value="BA"/>
+            <StringItem index="5" value="CE"/>
+            <StringItem index="6" value="DF"/>
+            <StringItem index="7" value="ES"/>
+            <StringItem index="8" value="GO"/>
+            <StringItem index="9" value="MA"/>
+            <StringItem index="10" value="MG"/>
+            <StringItem index="11" value="MS"/>
+            <StringItem index="12" value="MT"/>
+            <StringItem index="13" value="PA"/>
+            <StringItem index="14" value="PB"/>
+            <StringItem index="15" value="PE"/>
+            <StringItem index="16" value="PI"/>
+            <StringItem index="17" value="PR"/>
+            <StringItem index="18" value="RJ"/>
+            <StringItem index="19" value="RN"/>
+            <StringItem index="20" value="RO"/>
+            <StringItem index="21" value="RR"/>
+            <StringItem index="22" value="RS"/>
+            <StringItem index="23" value="SC"/>
+            <StringItem index="24" value="SE"/>
+            <StringItem index="25" value="SP"/>
+            <StringItem index="26" value="TO"/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -407,7 +456,12 @@
     <Component class="javax.swing.JComboBox" name="cbxEstadoCivil">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="4">
+            <StringItem index="0" value="Solteiro"/>
+            <StringItem index="1" value="Casado"/>
+            <StringItem index="2" value="Viuvo"/>
+            <StringItem index="3" value=" "/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -467,7 +521,16 @@
     <Component class="javax.swing.JComboBox" name="cbxEscolaridade">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="8">
+            <StringItem index="0" value="Fundamental Completo"/>
+            <StringItem index="1" value="Fundamental Incompleto"/>
+            <StringItem index="2" value="M&#xe9;dio Completo"/>
+            <StringItem index="3" value="M&#xe9;dio Incompleto"/>
+            <StringItem index="4" value="Superior Completo"/>
+            <StringItem index="5" value="Superior Incompleto"/>
+            <StringItem index="6" value="P&#xf3;s Completo"/>
+            <StringItem index="7" value="P&#xf3;s Incompleto"/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
