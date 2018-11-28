@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 /**
  *
  * @author 0030481623010
@@ -96,15 +97,21 @@ public class DaoCurso {
         }
     }
     
-    public void listar (Curso curso) {
+    public ArrayList<String> listarSiglas () {
         PreparedStatement ps = null;
-        
+        ArrayList<String> list = new ArrayList();
         try {
             ps = conn.prepareStatement("SELECT sigla_curso from tbCurso");
 
-            ps.execute();
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                list.add(rs.getString("sigla_curso"));
+            }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+        System.out.println(list);
+        return list;
     }
 }

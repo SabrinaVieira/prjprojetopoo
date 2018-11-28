@@ -1,8 +1,10 @@
 package fatec.poo.view;
 
 import fatec.poo.control.Conexao;
+import fatec.poo.control.DaoCurso;
 import fatec.poo.control.DaoTurma;
 import fatec.poo.model.Turma;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,7 +30,7 @@ public class GuiTurma extends javax.swing.JFrame {
     private void initComponents() {
 
         lblCurso = new javax.swing.JLabel();
-        cbxCurso = new javax.swing.JComboBox<>();
+        cbxCurso = new javax.swing.JComboBox<String>();
         lblSigla = new javax.swing.JLabel();
         txtSigla = new javax.swing.JTextField();
         lblNome = new javax.swing.JLabel();
@@ -36,7 +38,7 @@ public class GuiTurma extends javax.swing.JFrame {
         lblQtdVagas = new javax.swing.JLabel();
         txtQtdeVagas = new javax.swing.JTextField();
         lblPeriodo = new javax.swing.JLabel();
-        cbxPeriodo = new javax.swing.JComboBox<>();
+        cbxPeriodo = new javax.swing.JComboBox<String>();
         lblDtInicio = new javax.swing.JLabel();
         txtDataTermino = new javax.swing.JFormattedTextField();
         lblDtTermino = new javax.swing.JLabel();
@@ -49,6 +51,11 @@ public class GuiTurma extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turma");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblCurso.setText("Curso");
 
@@ -87,7 +94,7 @@ public class GuiTurma extends javax.swing.JFrame {
 
         lblPeriodo.setText("Período");
 
-        cbxPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        cbxPeriodo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cbxPeriodo.setEnabled(false);
         cbxPeriodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,14 +290,7 @@ public class GuiTurma extends javax.swing.JFrame {
     private void txtDtInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDtInicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDtInicioActionPerformed
-
-        private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
-        conexao = new Conexao("BD1613035","BD1613035");
-        conexao.setDriver("oracle.jdbc.driver.OracleDriver");
-        conexao.setConnectionString("jdbc:oracle:thin:@apolo:1521:xe");
-        daoTurma = new DaoTurma(conexao.conectar());
-    }                                 
-
+                           
     private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
         conexao.fecharConexao();
         dispose();
@@ -438,6 +438,19 @@ public class GuiTurma extends javax.swing.JFrame {
             } 
     }//GEN-LAST:event_btnConsultarActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao("SYSTEM","root");
+        conexao.setDriver("oracle.jdbc.driver.OracleDriver");
+        conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
+        daoTurma = new DaoTurma(conexao.conectar());
+        daoCurso = new DaoCurso(conexao.conectar());
+        
+        ArrayList<String> cursos = daoCurso.listarSiglas();
+        for(String curso : cursos){
+            cbxCurso.addItem(curso);
+        }
+    }//GEN-LAST:event_formWindowOpened
+
     /* @param args the command line arguments*/
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -494,4 +507,5 @@ public class GuiTurma extends javax.swing.JFrame {
     private DaoTurma daoTurma = null;
     private Turma turma = null;
     private Conexao conexao = null;
+    private DaoCurso daoCurso = null;
 }
