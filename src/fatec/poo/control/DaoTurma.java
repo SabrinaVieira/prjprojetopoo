@@ -7,12 +7,15 @@
 
 package fatec.poo.control;
 
+import fatec.poo.control.DaoCurso;
 import fatec.poo.model.Turma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Set;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 
 /*@author Sabrina */
@@ -63,7 +66,6 @@ public class DaoTurma {
         }
     }
     
-    //TALVEZ DE PAU AQUI, NÃO ESTA SENDO SETADO O CURSO
     public Turma consultar(String sigla){
         Turma tur = null;
         PreparedStatement ps = null;
@@ -74,11 +76,21 @@ public class DaoTurma {
             
             if(rs.next()){
                 tur = new Turma(sigla, rs.getString("nome_t"));
+                //tur.setCurso(DaoCurso.consultar(rs.getString("sigla_curso")));
                 
                 tur.setQtdVagas(rs.getInt("qtd_vagas"));
                 tur.setDataInicio(rs.getString("dt_inicio"));
                 tur.setPeriodo(rs.getString("periodo"));
-                tur.setDataTermino(rs.getString("dt_term"));
+                
+                try {
+                    SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    SimpleDateFormat targetFt = new SimpleDateFormat("dd/MM/yyyy");
+                    Date date = dbFormat.parse(rs.getString("dt_term"));
+                    tur.setDataTermino(targetFt.format(date));
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+                
             }
         }catch(SQLException ex){
             System.out.println(ex.toString());
