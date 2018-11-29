@@ -5,13 +5,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 /**
  *
  * @author 0030481623010
  */
 public class DaoCurso {
-    private Connection conn;
+    private static Connection conn;
     
     public DaoCurso (Connection conn) {
         this.conn = conn;
@@ -79,7 +81,7 @@ public class DaoCurso {
         }
     }
     
-    public void consultar (String sigla) {
+    public static void consultar (String sigla) {
         Curso curso = null;
         PreparedStatement ps = null;
         
@@ -91,6 +93,19 @@ public class DaoCurso {
             
             if (rs.next()) {
                 curso = new Curso (sigla, rs.getString("nome_curso"));
+                curso.setValor(rs.getInt("valor_curso"));
+                curso.setCargaHoraria(rs.getInt("carga_horaria"));
+                curso.setPrograma(rs.getString("prog_curso"));
+                curso.setValorHoraInstrutor((rs.getInt("valor_hora_inst")));
+                
+                try {
+                    SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    SimpleDateFormat targetFt = new SimpleDateFormat("dd/MM/yyyy");
+                    Date date = dbFormat.parse(rs.getString("data_vig_curso"));
+                    curso.setDataVigencia(targetFt.format(date));
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
