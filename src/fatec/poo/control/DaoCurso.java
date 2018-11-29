@@ -81,7 +81,7 @@ public class DaoCurso {
         }
     }
     
-    public static void consultar (String sigla) {
+    public Curso consultar (String sigla) {
         Curso curso = null;
         PreparedStatement ps = null;
         
@@ -110,6 +110,7 @@ public class DaoCurso {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+        return curso;
     }
     
     public ArrayList<String> listarSiglas () {
