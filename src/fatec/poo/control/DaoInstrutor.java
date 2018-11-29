@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -34,22 +36,32 @@ public class DaoInstrutor{
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                instrutor = new Instrutor(cpf, rs.getString("nome"));
-                instrutor.setAreaFormacao(rs.getString("area_formacao"));
+                instrutor = new Instrutor(cpf, rs.getString("nome_inst"));
+                instrutor.setAreaFormacao(rs.getString("area_atuacao"));
                 instrutor.setBairro(rs.getString("bairro"));
-                instrutor.setCelular(rs.getString("celular"));
+                instrutor.setCelular(rs.getString("tel_cel"));
                 instrutor.setCep(rs.getString("cep"));
                 instrutor.setCidade(rs.getString("cidade"));
-                instrutor.setDataNasc(rs.getString("data_nasc"));
                 instrutor.setEmail(rs.getString("email"));
                 instrutor.setEndereco(rs.getString("endereco"));
-                instrutor.setEstado(rs.getString("estado"));
-                instrutor.setEstadoCivil(rs.getString("estado_civil"));
+                instrutor.setEstado(rs.getString("uf"));
+                instrutor.setEstadoCivil(rs.getString("civil"));
                 instrutor.setFormacao(rs.getString("formacao"));
-                instrutor.setNumero(rs.getInt("numero"));
+                instrutor.setNumero(rs.getInt("num"));
                 instrutor.setRg(rs.getString("rg"));
                 instrutor.setSexo(rs.getString("sexo"));
-                instrutor.setTelefone(rs.getString("telefone"));
+                instrutor.setTelefone(rs.getString("tel_res"));
+                
+                try
+                {
+                    SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                    SimpleDateFormat targetFt = new SimpleDateFormat("dd/MM/yyyy");
+                    Date date = dbFormat.parse(rs.getString("dt_nasc"));
+                    instrutor.setDataNasc(targetFt.format(date));
+                }catch(Exception e)
+                {
+                    System.out.println(e.toString());
+                }
                 
             }
         }catch(SQLException e)
@@ -64,8 +76,8 @@ public class DaoInstrutor{
         try
         {
             PreparedStatement ps = conn.prepareStatement("INSERT INTO tbInstrutor "
-                    + "(cpf, nome, area_formacao, bairro, celular, cep, cidade, data_nasc,"
-                    + " email, endereco, estado, estado_civil, formacao, numero, rg, sexo, telefone) "
+                    + "(cpf, nome_inst, area_atuacao, bairro, tel_cel, cep, cidade, dt_nasc,"
+                    + " email, endereco, uf, civil, formacao, num, rg, sexo, tel_res) "
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             this.setPrepareStatement(ps, instrutor);
             
@@ -80,10 +92,11 @@ public class DaoInstrutor{
     {
         try
         {
-            PreparedStatement ps = conn.prepareStatement("UPDATE tbInstrutor "
-                    + "cpf = ?, nome = ? , area_formacao = ?, bairro = ?, celular = ?, cep = ?, cidade = ?, data_nasc = ?,"
-                    + " email = ?, endereco = ?, estado = ?, estado_civil = ?, formacao = ?, numero = ?, rg = ?, sexo = ?, telefone = ? ");
+            PreparedStatement ps = conn.prepareStatement("UPDATE tbInstrutor SET "
+                    + "cpf = ?, nome_inst = ? , area_atuacao = ?, bairro = ?, tel_cel = ?, cep = ?, cidade = ?, dt_nasc = ?,"
+                    + " email = ?, endereco = ?, uf = ?, civil = ?, formacao = ?, num = ?, rg = ?, sexo = ?, tel_res = ? WHERE cpf = ?");
             this.setPrepareStatement(ps, instrutor);
+            ps.setString(18, instrutor.getCpf());
             
             ps.execute();
         } 
@@ -97,7 +110,7 @@ public class DaoInstrutor{
         try
         {
             PreparedStatement ps = conn.prepareStatement("DELETE FROM tbinstrutor WHERE cpf = ?");
-            ps.setString(0, instrutor.getCpf());
+            ps.setString(1, instrutor.getCpf());
             ps.execute();
         } 
         catch(SQLException ex){
@@ -124,8 +137,9 @@ public class DaoInstrutor{
             ps.setString(12, instrutor.getEstadoCivil());
             ps.setString(13, instrutor.getFormacao());
             ps.setInt(14, instrutor.getNumero());
-            ps.setString(15, instrutor.getSexo());
-            ps.setString(16, instrutor.getTelefone());
+            ps.setString(15, instrutor.getRg());
+            ps.setString(16, instrutor.getSexo());
+            ps.setString(17, instrutor.getTelefone());
         }catch(SQLException e)
         {
             System.out.println(e.getMessage());

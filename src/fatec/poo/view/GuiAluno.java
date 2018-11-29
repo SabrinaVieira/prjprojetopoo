@@ -413,7 +413,8 @@ public class GuiAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxEscolaridadeActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        this.setAlunoObject();
+        if(!this.setAlunoObject())
+            return;
         daoAluno.inserir(aluno);
         
         this.enabledFields(false);
@@ -468,7 +469,8 @@ public class GuiAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        this.setAlunoObject();
+        if(!this.setAlunoObject())
+            return;
         daoAluno.alterar(aluno);
         this.cleanFields();
         
@@ -519,8 +521,20 @@ public class GuiAluno extends javax.swing.JFrame {
         });
     }
     
-    private void setAlunoObject()
+    private boolean setAlunoObject()
     {
+        if( txtNome.getText().isEmpty() ||
+            txtDtNascto.getText().isEmpty() ||
+            cbxSexo.getSelectedItem().toString().isEmpty() ||
+            txtEndereco.getText().isEmpty() ||
+            txtRg.getText().isEmpty() ||
+            txtEmail.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(rootPane,
+                "Há dados para serem preenchidos!");
+            return false;
+        }
+        
         String cpf = txtCpf.getText().replace(".", "").replace("-", "");
         aluno = new Aluno(cpf, txtNome.getText());
         aluno.setBairro(txtBairro.getText());
@@ -533,22 +547,16 @@ public class GuiAluno extends javax.swing.JFrame {
         aluno.setEscolaridade(cbxEscolaridade.getSelectedItem().toString());
         aluno.setEstado(cbxEstado.getSelectedItem().toString());
         aluno.setEstadoCivil(cbxEstadoCivil.getSelectedItem().toString());
-        aluno.setNumero(Integer.parseInt(txtNumero.getText()));
         aluno.setRg(txtRg.getText().replace(".", "").replace("-", ""));
         aluno.setSexo(cbxSexo.getSelectedItem().toString());
         aluno.setTelefone(txtTelRes.getText().replaceAll("\\D+", ""));
         
-        if( aluno.getNome().isEmpty() ||
-            aluno.getDataNasc().isEmpty() ||
-            aluno.getSexo().isEmpty() ||
-            aluno.getEndereco().isEmpty() ||
-            aluno.getRg().isEmpty() ||
-            aluno.getEmail().isEmpty())
+        if(!txtNumero.getText().isEmpty())
         {
-            JOptionPane.showMessageDialog(rootPane,
-                "Há dados para serem preenchidos!");
-            return;
+            aluno.setNumero(Integer.parseInt(txtNumero.getText()));
         }
+        
+        return true;
     }
     
     private void enabledFields(boolean status){
