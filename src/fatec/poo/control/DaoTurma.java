@@ -32,8 +32,9 @@ public class DaoTurma {
                                     + " sigla_curso, nome_t, qnt_vagas, "
                                     + "dt_inicio, periodo, dt_term) "
                                     + "values(?,?,?,?,?,?,?)");
-            ps.setString(1, turma.getCurso().getSigla());
-            ps.setString(2, turma.getSiglaTurma());
+            
+            ps.setString(1, turma.getSiglaTurma());
+            ps.setString(2, turma.getCurso().getSigla());
             ps.setString(3,turma.getDescricao());
             ps.setInt(4,turma.getQtdVagas());
             ps.setString(5, turma.getDataInicio());
@@ -48,7 +49,7 @@ public class DaoTurma {
     public void alterar(Turma turma){
         PreparedStatement ps = null;
         try{
-            ps = con.prepareStatement("UPDATE table tbTurma set sigla_curso = ?,"
+            ps = con.prepareStatement("UPDATE tbTurma set sigla_curso = ?,"
                                     + " nome_t = ?, qnt_vagas = ?, dt_inicio = ?,"
                                     + " periodo = ?, dt_term= ? "
                                     + "WHERE sigla_turma = ?");
@@ -76,17 +77,20 @@ public class DaoTurma {
             
             if(rs.next()){
                 tur = new Turma(sigla, rs.getString("nome_t"));
-                //tur.setCurso(DaoCurso.consultar(rs.getString("sigla_curso")));
-                
-                tur.setQtdVagas(rs.getInt("qtd_vagas"));
-                tur.setDataInicio(rs.getString("dt_inicio"));
+                DaoCurso daoCurso = new DaoCurso(con);
+                tur.setCurso(daoCurso.consultar(rs.getString("sigla_curso")));
+                tur.setQtdVagas(rs.getInt("qnt_vagas"));
                 tur.setPeriodo(rs.getString("periodo"));
                 
                 try {
                     SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                     SimpleDateFormat targetFt = new SimpleDateFormat("dd/MM/yyyy");
-                    Date date = dbFormat.parse(rs.getString("dt_term"));
-                    tur.setDataTermino(targetFt.format(date));
+                    Date dateEnd = dbFormat.parse(rs.getString("dt_term"));
+                    Date dateStart = dbFormat.parse(rs.getString("dt_inicio"));
+                    
+                    //seta as datas
+                    tur.setDataTermino(targetFt.format(dateEnd));
+                    tur.setDataInicio(targetFt.format(dateStart));
                 } catch (Exception e) {
                     System.out.println(e.toString());
                 }

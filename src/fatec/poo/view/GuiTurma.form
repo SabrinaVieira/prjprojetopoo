@@ -72,8 +72,8 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="cbxPeriodo" pref="83" max="32767" attributes="0"/>
-                                  <Component id="txtDataTermino" max="32767" attributes="0"/>
+                                  <Component id="txtDataTermino" pref="83" max="32767" attributes="0"/>
+                                  <Component id="cbxPeriodo" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -139,6 +139,7 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxCursoActionPerformed"/>
@@ -153,9 +154,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSiglaTurma">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSiglaTurmaActionPerformed"/>
       </Events>
@@ -194,8 +192,10 @@
     <Component class="javax.swing.JComboBox" name="cbxPeriodo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value=" "/>
+          <StringArray count="3">
+            <StringItem index="0" value="Manha"/>
+            <StringItem index="1" value="Tarde"/>
+            <StringItem index="2" value="Noite"/>
           </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
