@@ -9,6 +9,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -49,12 +52,6 @@
                                   <Component id="txtBairro" alignment="0" pref="271" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                      <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtNumero" min="-2" pref="73" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -77,50 +74,59 @@
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblDtNascto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txtDtNascto" min="-2" pref="73" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblEstadoCivil" alignment="1" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
-                                              <Component id="lblDtNascto" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txtDtNascto" min="-2" pref="73" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="lblEstadoCivil" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="cbxEstadoCivil" min="-2" pref="73" max="-2" attributes="0"/>
+                                              <Component id="txtNumero" min="-2" pref="73" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxEstadoCivil" min="-2" pref="103" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Component id="txtCpf" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtFormacao" alignment="0" pref="140" max="32767" attributes="0"/>
-                                  <Component id="txtCidade" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtCpf" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
+                                  <Component id="txtRg" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="txtFormacao" alignment="0" pref="140" max="32767" attributes="0"/>
+                                          <Component id="txtCidade" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxEstado" min="-2" pref="54" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="cbxEstado" min="-2" pref="38" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="txtRg" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
-                          <Component id="txtEmail" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="btnConsultar" linkSize="3" min="-2" pref="99" max="-2" attributes="0"/>
+                      <Component id="btnConsultar" linkSize="6" min="-2" pref="111" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="btnInserir" linkSize="3" min="-2" pref="83" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAlterar" linkSize="3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnExcluir" linkSize="3" min="-2" pref="83" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSair" linkSize="3" min="-2" pref="65" max="-2" attributes="0"/>
+                      <Component id="btnInserir" linkSize="6" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="btnAlterar" linkSize="6" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExcluir" linkSize="6" min="-2" pref="97" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSair" linkSize="6" min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -144,21 +150,12 @@
                           <Component id="lblSexo" pref="31" max="32767" attributes="0"/>
                           <Component id="cbxSexo" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblEndereco" max="32767" attributes="0"/>
-                                  <Component id="txtEndereco" alignment="0" pref="28" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblEndereco" max="32767" attributes="0"/>
+                          <Component id="txtEndereco" alignment="0" pref="28" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblBairro" alignment="3" max="32767" attributes="0"/>
                           <Component id="txtBairro" alignment="3" max="32767" attributes="0"/>
@@ -188,10 +185,10 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
                           <Component id="btnSair" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnConsultar" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAlterar" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnInserir" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnExcluir" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConsultar" linkSize="5" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAlterar" linkSize="5" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnInserir" linkSize="5" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnExcluir" linkSize="5" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
@@ -207,7 +204,9 @@
                                   <Component id="lblEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="cbxEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtCep" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCep" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -248,6 +247,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Consultar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAlterar">
       <Properties>
@@ -257,6 +259,9 @@
         <Property name="text" type="java.lang.String" value="Alterar"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnInserir">
       <Properties>
@@ -266,6 +271,9 @@
         <Property name="text" type="java.lang.String" value="Inserir"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInserirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnExcluir">
       <Properties>
@@ -275,6 +283,9 @@
         <Property name="text" type="java.lang.String" value="Excluir"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnSair">
       <Properties>
@@ -283,6 +294,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSairActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCpf">
       <Properties>
@@ -314,7 +328,10 @@
     <Component class="javax.swing.JComboBox" name="cbxSexo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="2">
+            <StringItem index="0" value="M"/>
+            <StringItem index="1" value="F"/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -357,7 +374,35 @@
     <Component class="javax.swing.JComboBox" name="cbxEstado">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="27">
+            <StringItem index="0" value="AC"/>
+            <StringItem index="1" value="AL"/>
+            <StringItem index="2" value="AM"/>
+            <StringItem index="3" value="AP"/>
+            <StringItem index="4" value="BA"/>
+            <StringItem index="5" value="CE"/>
+            <StringItem index="6" value="DF"/>
+            <StringItem index="7" value="ES"/>
+            <StringItem index="8" value="GO"/>
+            <StringItem index="9" value="MA"/>
+            <StringItem index="10" value="MG"/>
+            <StringItem index="11" value="MS"/>
+            <StringItem index="12" value="MT"/>
+            <StringItem index="13" value="PA"/>
+            <StringItem index="14" value="PB"/>
+            <StringItem index="15" value="PE"/>
+            <StringItem index="16" value="PI"/>
+            <StringItem index="17" value="PR"/>
+            <StringItem index="18" value="RJ"/>
+            <StringItem index="19" value="RN"/>
+            <StringItem index="20" value="RO"/>
+            <StringItem index="21" value="RR"/>
+            <StringItem index="22" value="RS"/>
+            <StringItem index="23" value="SC"/>
+            <StringItem index="24" value="SE"/>
+            <StringItem index="25" value="SP"/>
+            <StringItem index="26" value="TO"/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -416,7 +461,11 @@
     <Component class="javax.swing.JComboBox" name="cbxEstadoCivil">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Solteiro"/>
+            <StringItem index="1" value="Casado"/>
+            <StringItem index="2" value="Viuvo"/>
+          </StringArray>
         </Property>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>

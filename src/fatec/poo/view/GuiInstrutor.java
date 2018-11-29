@@ -5,6 +5,12 @@
  */
 package fatec.poo.view;
 
+import fatec.poo.control.Conexao;
+import fatec.poo.control.DaoInstrutor;
+import fatec.poo.model.Instrutor;
+import fatec.poo.model.Pessoa;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 0030481713006
@@ -69,24 +75,54 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Instrutor");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/pesq.png"))); // NOI18N
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/add.png"))); // NOI18N
         btnInserir.setText("Inserir");
         btnInserir.setEnabled(false);
+        btnInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Eraser.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/exit.png"))); // NOI18N
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
         lblCpf.setText("CPF");
 
@@ -102,6 +138,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         lblSexo.setText("Sexo");
 
+        cbxSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
         cbxSexo.setEnabled(false);
 
         lblEndereco.setText("Endereço");
@@ -118,6 +155,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         lblEstado.setText("Estado");
 
+        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
         cbxEstado.setEnabled(false);
 
         lblRg.setText("RG");
@@ -148,6 +186,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
 
         lblEstadoCivil.setText("Estado Civil");
 
+        cbxEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Solteiro", "Casado", "Viuvo" }));
         cbxEstadoCivil.setEnabled(false);
 
         lblNumero.setText("Nº");
@@ -213,11 +252,6 @@ public class GuiInstrutor extends javax.swing.JFrame {
                                     .addComponent(txtBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(97, 97, 97)
-                                        .addComponent(lblNumero)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(179, 179, 179)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblCep)
@@ -235,38 +269,45 @@ public class GuiInstrutor extends javax.swing.JFrame {
                                         .addComponent(txtAreaAtuacao, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(159, 159, 159)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(lblDtNascto)
+                                        .addComponent(lblDtNascto)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtDtNascto, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(97, 97, 97)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblEstadoCivil)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lblNumero)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtDtNascto, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(lblEstadoCivil)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtFormacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addComponent(lblEstado)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txtFormacao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(txtCidade, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblEstado)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterar)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(60, 60, 60))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnConsultar, btnExcluir, btnInserir, btnSair});
@@ -288,17 +329,11 @@ public class GuiInstrutor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSexo, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                             .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lblNumero)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(lblEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblBairro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtBairro))
@@ -338,7 +373,9 @@ public class GuiInstrutor extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(lblEstadoCivil)
                                     .addComponent(cbxEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
+                                .addGap(8, 8, 8)
+                                .addComponent(lblNumero)
+                                .addGap(7, 7, 7)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCep)))
@@ -360,8 +397,83 @@ public class GuiInstrutor extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterar, btnConsultar, btnExcluir, btnInserir});
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao("SYSTEM","root");
+        conexao.setDriver("oracle.jdbc.driver.OracleDriver");
+        conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
+        daoInstrutor = new DaoInstrutor(conexao.conectar());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        String cpf = txtCpf.getText().replace(".", "").replace("-", "");
+        if(!Pessoa.validarCPF(cpf))
+        {
+            txtCpf.requestFocusInWindow();
+    
+            // show a joptionpane dialog using showMessageDialog
+            JOptionPane.showMessageDialog(rootPane,
+                "Cpf Inválido");
+            return;
+        }
+        instrutor  = daoInstrutor.consultar(cpf);
+        
+        if(instrutor == null){
+            btnConsultar.setEnabled(false);
+            btnInserir.setEnabled(true);
+            
+            //habilitando outros campos
+            this.enabledFields(true);
+            txtCpf.setEnabled(false);
+            
+            txtNome.requestFocusInWindow();
+            return;
+        }
+        
+        btnConsultar.setEnabled(false);
+        btnAlterar.setEnabled(true);
+        btnExcluir.setEnabled(true);
+        this.setFieldsByInstrutor();
+        this.enabledFields(true);
+        txtCpf.setEnabled(false);
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+        if(!this.setInstrutorObject())
+            return;
+        daoInstrutor.inserir(instrutor);
+        
+        this.enabledFields(false);
+        txtCpf.setEnabled(true);
+        
+        this.cleanFields();
+    }//GEN-LAST:event_btnInserirActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        daoInstrutor.excluir(instrutor);
+        this.cleanFields();
+        this.enabledFields(false);
+        
+        txtCpf.setEnabled(true);
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        if(!this.setInstrutorObject())
+            return;
+        daoInstrutor.alterar(instrutor);
+        this.cleanFields();
+        
+        this.enabledFields(false);
+        txtCpf.setEnabled(true);
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,6 +508,112 @@ public class GuiInstrutor extends javax.swing.JFrame {
                 new GuiInstrutor().setVisible(true);
             }
         });
+    }
+    
+    private boolean setInstrutorObject()
+    {
+        if( txtNome.getText().isEmpty() ||
+            txtDtNascto.getText().isEmpty() ||
+            cbxSexo.getSelectedItem().toString().isEmpty() ||
+            txtEndereco.getText().isEmpty() ||
+            txtRg.getText().isEmpty() ||
+            txtEmail.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(rootPane,
+                "Há dados para serem preenchidos!");
+            return false;
+        }
+        
+        String cpf = txtCpf.getText().replace(".", "").replace("-", "");
+        instrutor = new Instrutor(cpf, txtNome.getText());
+        instrutor.setBairro(txtBairro.getText());
+        instrutor.setCelular(txtCelular.getText().replaceAll("\\D+", ""));
+        instrutor.setCep(txtCep.getText().replace("-", ""));
+        instrutor.setCidade(txtCidade.getText());
+        instrutor.setDataNasc(txtDtNascto.getText().replace("//", ""));
+        instrutor.setEmail(txtEmail.getText());
+        instrutor.setEndereco(txtEndereco.getText());
+        instrutor.setAreaFormacao(txtAreaAtuacao.getText());
+        instrutor.setFormacao(txtFormacao.getText());
+        instrutor.setEstado(cbxEstado.getSelectedItem().toString());
+        instrutor.setEstadoCivil(cbxEstadoCivil.getSelectedItem().toString());
+        instrutor.setRg(txtRg.getText().replace(".", "").replace("-", ""));
+        instrutor.setSexo(cbxSexo.getSelectedItem().toString());
+        instrutor.setTelefone(txtTelRes.getText().replaceAll("\\D+", ""));
+        
+        if(!txtNumero.getText().isEmpty())
+        {
+            instrutor.setNumero(Integer.parseInt(txtNumero.getText()));
+        }
+        
+        return true;
+    }
+    
+    private void enabledFields(boolean status){
+        txtCpf.setEnabled(status);
+        txtNome.setEnabled(status);
+        cbxSexo.setEnabled(status);
+        cbxEstadoCivil.setEnabled(status);
+        txtDtNascto.setEnabled(status);
+        txtAreaAtuacao.setEnabled(status);
+        txtFormacao.setEnabled(status);
+        txtEndereco.setEnabled(status);
+        txtBairro.setEnabled(status);
+        txtCidade.setEnabled(status);
+        cbxEstado.setEnabled(status);
+        txtRg.setEnabled(status);
+        txtEmail.setEnabled(status);
+        txtNumero.setEnabled(status);
+        txtCep.setEnabled(status);
+        txtCelular.setEnabled(status);
+        txtTelRes.setEnabled(status);
+    }
+    
+    private void cleanFields()
+    {
+        txtCpf.setText("");
+        txtNome.setText("");
+        cbxSexo.setSelectedIndex(0);
+        cbxEstadoCivil.setSelectedIndex(0);
+        txtDtNascto.setText("");
+        txtAreaAtuacao.setText("");
+        txtFormacao.setText("");
+        txtEndereco.setText("");
+        txtBairro.setText("");
+        txtCidade.setText("");
+        cbxEstado.setSelectedIndex(0);
+        txtRg.setText("");
+        txtEmail.setText("");
+        txtNumero.setText("");
+        txtCep.setText("");
+        txtCelular.setText("");
+        txtTelRes.setText("");
+        
+        txtCpf.requestFocusInWindow();
+        
+        btnInserir.setEnabled(false);
+        btnConsultar.setEnabled(true);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+    }
+    
+    private void setFieldsByInstrutor(){
+        txtNome.setText(instrutor.getNome());
+        cbxSexo.setSelectedItem(instrutor.getSexo());
+        cbxEstadoCivil.setSelectedItem(instrutor.getEstadoCivil());
+        txtDtNascto.setText(instrutor.getDataNasc());
+        txtAreaAtuacao.setText(instrutor.getAreaFormacao());
+        txtFormacao.setText(instrutor.getFormacao());
+        txtEndereco.setText(instrutor.getEndereco());
+        txtBairro.setText(instrutor.getBairro());
+        txtCidade.setText(instrutor.getCidade());
+        cbxEstado.setSelectedItem(instrutor.getEstado());
+        txtRg.setText(instrutor.getRg());
+        txtEmail.setText(instrutor.getEmail());
+        txtNumero.setText(Integer.toString(instrutor.getNumero()));
+        txtCep.setText(instrutor.getCep());
+        txtCelular.setText(instrutor.getCelular());
+        txtTelRes.setText(instrutor.getTelefone());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -439,4 +657,7 @@ public class GuiInstrutor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtRg;
     private javax.swing.JFormattedTextField txtTelRes;
     // End of variables declaration//GEN-END:variables
+    private Instrutor instrutor = null;
+    private DaoInstrutor daoInstrutor = null;
+    private Conexao conexao = null;
 }
