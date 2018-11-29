@@ -127,7 +127,7 @@ public class DaoCurso {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        System.out.println(list);
+        
         return list;
     }
 }
