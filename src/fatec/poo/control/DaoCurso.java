@@ -23,10 +23,10 @@ public class DaoCurso {
         PreparedStatement ps = null;
         
         try {
-            ps = conn.prepareStatement("INSERTO INTO tbCurso (sigla_curso, " +
+            ps = conn.prepareStatement("INSERT INTO tbCurso (sigla_curso, " +
                                         "nome_curso, carga_horaria, valor_curso," +
                                         "prog_curso, data_vig_curso, " +
-                                        "valor_hora_inst) Values (?, ?, ?, ?, ?, ?, ?)");
+                                        "valor_hora_inst) values (?, ?, ?, ?, ?, ?, ?)");
             ps.setString(1, curso.getSigla());
             ps.setString(2, curso.getNome());
             ps.setInt(3, curso.getCargaHoraria());
@@ -45,7 +45,7 @@ public class DaoCurso {
         PreparedStatement ps = null;
         
         try {
-            ps = conn.prepareStatement("UPDATE table tbCurso tbCurso " +
+            ps = conn.prepareStatement("UPDATE tbCurso SET " +
                                         "nome_curso= ?, carga_horaria= ?, valor_curso= ?," +
                                         "prog_curso= ?, data_vig_curso= ?, " +
                                         "valor_hora_inst= ? where sigla_curso= ?");
@@ -86,17 +86,17 @@ public class DaoCurso {
         PreparedStatement ps = null;
         
         try {
-            ps = conn.prepareStatement("SELECT from tbCurso WHERE " +
-                                        "sigla_curso= ?");
+            ps = conn.prepareStatement("SELECT * from tbCurso WHERE " +
+                                        "sigla_curso = ?");
             ps.setString(1, sigla);
             ResultSet rs =  ps.executeQuery();
             
             if (rs.next()) {
                 curso = new Curso (sigla, rs.getString("nome_curso"));
-                curso.setValor(rs.getInt("valor_curso"));
+                curso.setValor(rs.getDouble("valor_curso"));
                 curso.setCargaHoraria(rs.getInt("carga_horaria"));
                 curso.setPrograma(rs.getString("prog_curso"));
-                curso.setValorHoraInstrutor((rs.getInt("valor_hora_inst")));
+                curso.setValorHoraInstrutor((rs.getDouble("valor_hora_inst")));
                 
                 try {
                     SimpleDateFormat dbFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

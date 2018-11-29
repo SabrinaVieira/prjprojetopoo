@@ -54,6 +54,11 @@ public class GuiCurso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastrar Curso");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblSiglaCurso.setText("Sigla curso");
         lblSiglaCurso.setName("lblSiglaCurso"); // NOI18N
@@ -261,10 +266,11 @@ public class GuiCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-            this.setCursoObject();
+            if(!this.setCursoObject())
+                return;
             daoCurso.inserir(curso);
             
-            this.enableFields(true);
+            this.enableFields(false);
             txtSiglaCurso.setEnabled(true);
             
             this.cleanFields();
@@ -295,7 +301,8 @@ public class GuiCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        this.setCursoObject();
+        if(!this.setCursoObject())
+            return;
         daoCurso.alterar(curso);
         this.cleanFields();
         
@@ -310,6 +317,13 @@ public class GuiCurso extends javax.swing.JFrame {
         
         txtSiglaCurso.setEnabled(true);
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao("SYSTEM","root");
+        conexao.setDriver("oracle.jdbc.driver.OracleDriver");
+        conexao.setConnectionString("jdbc:oracle:thin:@localhost:1521:xe");
+        daoCurso = new DaoCurso(conexao.conectar());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -352,24 +366,29 @@ public class GuiCurso extends javax.swing.JFrame {
         txtCargaHoraria.setText(Integer.toString(curso.getCargaHoraria()));
         txtValorHoraInstrutor.setText(Double.toString(curso.getValorHoraInstrutor()));
         txtProgramaCurso.setText(curso.getPrograma());
-        
+        txtDtVigencia.setText(curso.getDataVigencia());
     }
     
-    private void setCursoObject () {
+    private boolean setCursoObject () {
+        if (txtNomeCurso.getText().isEmpty() ||
+            txtDtVigencia.getText().isEmpty() ||
+            txtValorCurso.getText().isEmpty() ||
+            txtCargaHoraria.getText().isEmpty() ||
+            txtValorHoraInstrutor.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane,
+                "Há dados para serem preenchidos!");
+            return false;
+        }
+        
         String sigla = txtSiglaCurso.getText();
-        Curso curso = new Curso(sigla, txtNomeCurso.getText());
-        curso.setValor(Integer.parseInt(txtValorCurso.getText()));
+        curso = new Curso(sigla, txtNomeCurso.getText());
+        curso.setValor(Double.parseDouble(txtValorCurso.getText()));
         curso.setCargaHoraria(Integer.parseInt(txtCargaHoraria.getText()));
-        curso.setValorHoraInstrutor(Integer.parseInt(txtValorHoraInstrutor.getText()));
+        curso.setValorHoraInstrutor(Double.parseDouble(txtValorHoraInstrutor.getText()));
         curso.setPrograma(txtProgramaCurso.getText());
         curso.setDataVigencia(txtDtVigencia.getText());
         
-        if (curso.getPrograma().isEmpty() ||
-                curso.getDataVigencia().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane,
-                "Há dados para serem preenchidos!");
-            return;
-        }
+        return true;
     }
 
     private void enableFields (boolean status) {
