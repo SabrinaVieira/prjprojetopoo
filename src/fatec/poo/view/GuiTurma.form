@@ -56,14 +56,14 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="cbxCurso" min="-2" pref="243" max="-2" attributes="0"/>
-                                  <Component id="txtSigla" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Component id="txtSiglaTurma" min="-2" pref="83" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDtInicio" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                                  <Component id="txtQtdeVagas" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Component id="txtDataInicio" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Component id="txtQtdVagas" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -94,7 +94,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSigla" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSigla" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSiglaTurma" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -104,7 +104,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblQtdVagas" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtQtdeVagas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtQtdVagas" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbxPeriodo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -113,7 +113,7 @@
                   <Component id="lblDtInicio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDataTermino" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblDtTermino" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDtInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDataInicio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="76" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
@@ -152,12 +152,12 @@
         <Property name="text" type="java.lang.String" value="Sigla da turma"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSigla">
+    <Component class="javax.swing.JTextField" name="txtSiglaTurma">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSiglaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSiglaTurmaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNome">
@@ -178,12 +178,12 @@
         <Property name="text" type="java.lang.String" value="Qtde vagas"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtQtdeVagas">
+    <Component class="javax.swing.JTextField" name="txtQtdVagas">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQtdeVagasActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQtdVagasActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblPeriodo">
@@ -228,7 +228,7 @@
         <Property name="text" type="java.lang.String" value="Data t&#xe9;rmino"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="txtDtInicio">
+    <Component class="javax.swing.JFormattedTextField" name="txtDataInicio">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format="##/##/####" subtype="-1" type="5"/>
@@ -236,7 +236,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDtInicioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDataInicioActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnConsultar">
